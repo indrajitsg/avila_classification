@@ -24,8 +24,8 @@ from scripts.utils import get_dataloaders
 batch_size = 256
 chkpoint_file = "../models/avila_chkpoint.pth"
 use_scheduler = False
-epochs = 100
-learning_rate = 0.01
+epochs = 1500
+learning_rate = 0.001
 gamma = 0.1
 log_file = "../logs/run1.log"
 
