@@ -32,7 +32,6 @@ log_file = "../logs/run1.log"
 # Set logging
 logging.basicConfig(filename=log_file, encoding='utf-8', level=logging.INFO)
 
-
 logging.info(f"Model Training using Python {sys.version} and PyTorch {torch.__version__}:")
 logging.info(f"Batch Size: {batch_size}")
 logging.info(f"Scheduler Use: {use_scheduler}")
@@ -90,6 +89,12 @@ for t in range(epochs):
         scheduler.step()
     
     logging.info(f"Epoch {t+1} Train Accuracy: {train_acc:>0.1f}%, Train Loss: {train_loss:>8f}, Test Accuracy: {test_acc:>0.1f}%, Test loss: {test_loss:>8f}")
+
+    # Check for auto stop
+    with open('autostop.txt', 'rt') as f:
+        content = f.readlines()
+        if int(content[0]) == 1:
+            break
 
 logging.info("End of Training!")
 logging.info("")
